@@ -3,6 +3,7 @@ package com.iu.home.util;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class DBConnection {
 	
@@ -37,6 +38,12 @@ public class DBConnection {
 		
 		//disConnection
 		public static void disConnection(PreparedStatement st, Connection con) throws Exception {
+			st.close();
+			con.close();
+		}
+		
+		public static void disConnection(ResultSet rs, PreparedStatement st, Connection con) throws Exception {
+			rs.close();
 			st.close();
 			con.close();
 		}
